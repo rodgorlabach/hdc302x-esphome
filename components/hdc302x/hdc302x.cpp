@@ -9,10 +9,10 @@ namespace hdc302x {
 static const char *const TAG = "hdc302x";
 
 void HDC302XComponent::setup() {
-  ESP_LOGCONFIG(TAG, "Setting up HDC3020...");
+  ESP_LOGCONFIG(TAG, "Setting up HDC302x...");
   // Soft reset
   if (!this->write_bytes(0x30, {0xA2})) {
-    ESP_LOGD(TAG, "HDC3020 soft reset failed");
+    ESP_LOGD(TAG, "HDC302x soft reset failed");
     this->mark_failed();
     return;
   }
@@ -28,7 +28,7 @@ void HDC302XComponent::setup() {
 
   delay(10);
 
-  ESP_LOGCONFIG(TAG, "HDC3020 auto measurement started at 1 Hz");
+  ESP_LOGCONFIG(TAG, "HDC302x auto measurement started at 1 Hz");
 }
 
 void HDC302XComponent::dump_config() {
@@ -89,4 +89,5 @@ bool HDC302XComponent::read_data(uint16_t &temperature, uint16_t &humidity) {
 }
 
 }  // namespace hdc302x
+
 }  // namespace esphome
