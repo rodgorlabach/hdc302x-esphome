@@ -5,10 +5,8 @@ This ESPHome external component enables support for **TI HDC3020, HDC3021, and H
 
 ```yaml
 external_components:
-  - source:
-      type: git
-      url: https://github.com/HarpalPannu/hdc302x-esphome.git
-    components: [ hdc302x ]
+  - source: github://HarpalPannu/hdc302x-esphome
+    components: [hdc302x]
 ```
 ### Configuration Example
 
