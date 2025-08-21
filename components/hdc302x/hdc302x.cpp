@@ -26,7 +26,7 @@ void HDC302XComponent::setup() {
     return;
   }
 
-  delay(10);
+  delay(15);
 
   ESP_LOGCONFIG(TAG, "HDC302x auto measurement started at 1 Hz");
 }
@@ -50,8 +50,9 @@ void HDC302XComponent::update() {
     return;
   }
 
-  // Convert raw values to actual temperature and humidity
-  float temperature = -40.0f + 165.0f * (raw_temperature / 65535.0f);
+  // Temperature: T°C = -45 + 175 × (T_raw / (2^16 - 1))
+  // Humidity: RH% = 100 × (RH_raw / (2^16 - 1))
+  float temperature = -45.0f + 175.0f * (raw_temperature / 65535.0f);
   float humidity = 100.0f * (raw_humidity / 65535.0f);
 
   ESP_LOGD(TAG, "Got temperature=%.1f°C humidity=%.1f%%", temperature,
