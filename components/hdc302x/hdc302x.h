@@ -1,6 +1,6 @@
 #include "esphome.h"
 
-class HDC3022Component : public PollingComponent, public i2c::I2CDevice {
+class HDC302xComponent : public PollingComponent, public i2c::I2CDevice {
  public:
   Sensor *temperature_sensor = nullptr;
   Sensor *humidity_sensor = nullptr;
@@ -8,7 +8,7 @@ class HDC3022Component : public PollingComponent, public i2c::I2CDevice {
   void set_temperature_sensor(Sensor *sensor) { temperature_sensor = sensor; }
   void set_humidity_sensor(Sensor *sensor) { humidity_sensor = sensor; }
 
-  HDC3022Component() : PollingComponent(5000) {}
+  HDC302xComponent() : PollingComponent(5000) {}
 
   void setup() override {
     // Nothing special on setup
@@ -21,7 +21,7 @@ class HDC3022Component : public PollingComponent, public i2c::I2CDevice {
 
     uint8_t data[6];
     if (read(data, 6) != i2c::ERROR_OK) {
-      ESP_LOGW("hdc3022", "I2C read failed!");
+      ESP_LOGW("hdc302x", "I2C read failed!");
       return;
     }
 
@@ -37,3 +37,4 @@ class HDC3022Component : public PollingComponent, public i2c::I2CDevice {
       humidity_sensor->publish_state(humidity);
   }
 };
+
