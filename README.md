@@ -13,7 +13,7 @@ external_components:
 ```yaml
 sensor:
   - platform: hdc302x
-    update_interval: 60s
+    update_interval: 1s
     address: 0x44
     temperature:
       name: "HDC302x Temperature"
