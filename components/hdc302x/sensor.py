@@ -9,13 +9,13 @@ from esphome.const import (
     STATE_CLASS_MEASUREMENT,
 )
 
-from . import hdc3022_ns, HDC3022Component
+from . import hdc302x_ns, HDC302xComponent
 
 CONF_TEMPERATURE = "temperature"
 CONF_HUMIDITY = "humidity"
 
 CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(HDC3022Component),
+    cv.GenerateID(): cv.declare_id(HDC302xComponent),
     cv.Optional(CONF_TEMPERATURE): sensor.sensor_schema(
         unit_of_measurement=UNIT_CELSIUS,
         accuracy_decimals=2,
@@ -42,3 +42,4 @@ async def to_code(config):
     if CONF_HUMIDITY in config:
         sens = await sensor.new_sensor(config[CONF_HUMIDITY])
         cg.add(var.set_humidity_sensor(sens))
+
