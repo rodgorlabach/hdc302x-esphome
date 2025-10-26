@@ -1,1 +1,2 @@
-#include "hdc3022.h"
+#include "hdc302x.h"
+
