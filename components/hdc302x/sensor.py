@@ -37,7 +37,7 @@ CONFIG_SCHEMA = (
             ),
         }
     )
-    .extend(cv.polling_component_schema("60s"))
+    .extend(cv.polling_component_schema("1s"))
     .extend(i2c.i2c_device_schema(0x44))
 )
 
@@ -52,4 +52,5 @@ async def to_code(config):
 
     if CONF_HUMIDITY in config:
         sens = await sensor.new_sensor(config[CONF_HUMIDITY])
+
         cg.add(var.set_humidity(sens))
