@@ -5,20 +5,20 @@ This ESPHome external component enables support for **TI HDC3020, HDC3021, and H
 
 ```yaml
 external_components:
-  - source: github://rodgorlabach/hdc3022-esphome
-    components: [hdc3022]
+  - source: github://rodgorlabach/hdc302x-esphome
+    components: [hdc302x]
 ```
 ### Configuration Example
 
 ```yaml
 sensor:
-  - platform: hdc3022
+  - platform: hdc302x
     update_interval: 60s
     address: 0x44
     temperature:
-      name: "HDC3022 Temperature"
-      id: hdc3022_temperature
+      name: "HDC302x Temperature"
+      id: hdc302x_temperature
     humidity:
-      name: "HDC3022 Humidity"
-      id: hdc3022_humidity
+      name: "HDC302x Humidity"
+      id: hdc302x_humidity
 ```
