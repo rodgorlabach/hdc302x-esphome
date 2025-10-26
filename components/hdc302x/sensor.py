@@ -11,7 +11,7 @@ from esphome.const import (
     UNIT_CELSIUS,
     UNIT_PERCENT,
 )
-CODEOWNERS = ["@HarpalPannu"]
+CODEOWNERS = ["@HarpalPannu, @rodgorlabach"]
 DEPENDENCIES = ["i2c"]
 
 hdc302x_ns = cg.esphome_ns.namespace("hdc302x")
@@ -54,3 +54,4 @@ async def to_code(config):
         sens = await sensor.new_sensor(config[CONF_HUMIDITY])
 
         cg.add(var.set_humidity(sens))
+
